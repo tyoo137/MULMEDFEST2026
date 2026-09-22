@@ -256,7 +256,7 @@
                 <p>Agenda festival tahunan yang diselenggarakan untuk merayakan Dies Natalis UKM Multimedia, Screening Film, serta perilisan buku karya puisi (SPEKTRA)</p>
                 <a href="#form-section" class="banner-btn">Daftar Sekarang</a>
             </div>
-            <img src="maskot.png" class="banner-image">
+            <img src="maskot.png" alt="Maskot Mulmedfest" class="banner-image">
         </div>
 
         <!-- FORM PENDAFTARAN -->
@@ -274,11 +274,6 @@
                     <div class="form-group">
                         <label for="instansi">Asal Instansi</label>
                         <input type="text" id="instansi" placeholder="Nama kampus/sekolah/instansi" required>
-                    </div>
-
-                     <div class="form-group">
-                        <label for="program_studi">Program Studi / Jurusan</label>
-                        <input type="text" id="program_studi" placeholder="Nama program studi / Jurusan" required>
                     </div>
 
                     <div class="form-group">
@@ -323,16 +318,15 @@
 
     <!-- JAVASCRIPT SYSTEM PENDAFTARAN -->
     <script>
-        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbz4CRAZ84OL0bnj_J1mnWI8HfND3FgNfpyJ7UcqDx3OOmkKghdh6elkAs_k4Kg-w98Xfg/exec";
-
+        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxBsdbqHeAw25v0QiFH27m9t0TEKUaq-i4C5KVY0iuA24X8G0EILGsEsCfKntAWKvOuAA/exec";
         function simpanKeDatabase() {
             const btnSubmit = document.getElementById('btnSubmit');
-            const nama = document.getElementById('nama').value;
-            const instansi = document.getElementById('instansi').value;
+            const nama = document.getElementById('nama').value.trim();
+            const instansi = document.getElementById('instansi').value.trim();
             const status = document.getElementById('status').value;
-            const id_number = document.getElementById('id_number').value;
-            const whatsapp = document.getElementById('whatsapp').value;
-            const email = document.getElementById('email').value;
+            const id_number = document.getElementById('id_number').value.trim();
+            const whatsapp = document.getElementById('whatsapp').value.trim();
+            const email = document.getElementById('email').value.trim();
             const tumbler = document.getElementById('tumbler').checked;
 
             if (!nama || !instansi || !status || !id_number || !whatsapp || !email) {
