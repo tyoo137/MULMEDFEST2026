@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MULMEDFEST - Registration Portal</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #eef2fb;
+            color: #2d3748;
+            padding-bottom: 50px;
+        }
+
+        /* --- HEADER / NAVBAR --- */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            background-color: transparent;
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-box {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+
+        .logo-img {
+            width: 45px;
+            height: 45px;
+            border-radius: 12px;
+            object-fit: cover;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .logo-text {
+            font-size: 20px;
+            font-weight: 700;
+            color: #3b4d8a;
+            letter-spacing: 0.5px;
+        }
+
+        /* --- MAIN CONTAINER --- */
+        .main-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* --- HERO BANNER --- */
+        .hero-banner {
+            background: linear-gradient(135deg, #002ffe 0%, #d10000 100%);
+            border-radius: 28px;
+            padding: 40px 50px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+            color: #ffffff;
+            box-shadow: 0 10px 30px rgba(115, 128, 207, 0.25);
+            margin-bottom: 35px;
+        }
+
+        .banner-content {
+            max-width: 50%;
+            z-index: 2;
+            margin-top: 15px;
+        }
+
+        .banner-content h1 {
+            font-size: 42px;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 12px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .banner-content p {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #f1f5f9;
+            margin-bottom: 24px;
+            opacity: 0.95;
+        }
+
+        .banner-btn {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(8px);
+            color: #ffffff;
+            padding: 10px 24px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            transition: all 0.3s;
+        }
+
+        .banner-btn:hover {
+            background: #ffffff;
+            color: #5c6bc0;
+        }
+
+        .banner-image {
+            width: 500px;
+            height: auto;
+            object-fit: contain;
+            z-index: 2;
+            transform: scale(1.4) translateY(10px);
+        }
+
+        /* --- FORM STYLING --- */
+        .section-title {
+            font-size: 22px;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 20px;
+        }
+
+        .form-card {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 35px;
+            box-shadow: 0 8px 25px rgba(148, 163, 184, 0.12);
+            border: 1px solid #e2e8f0;
+            margin-bottom: 40px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        label {
+            font-size: 13px;
+            font-weight: 600;
+            color: #475569;
+        }
+
+        input[type="text"], input[type="tel"], input[type="email"], select {
+            width: 100%;
+            padding: 12px 16px;
+            background: #f8fafc;
+            border: 1px solid #cbd5e1;
+            border-radius: 14px;
+            font-size: 14px;
+            color: #334155;
+            outline: none;
+            transition: all 0.2s ease;
+        }
+
+        input:focus, select:focus {
+            background: #ffffff;
+            border-color: #7380cf;
+            box-shadow: 0 0 0 3px rgba(115, 128, 207, 0.2);
+        }
+
+        .checkbox-container {
+            grid-column: span 2;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: #f1f5f9;
+            padding: 16px 20px;
+            border-radius: 16px;
+            margin-top: 5px;
+        }
+
+        .checkbox-container input {
+            width: 20px;
+            height: 20px;
+            accent-color: #5c6bc0;
+            cursor: pointer;
+        }
+
+        .checkbox-container label {
+            font-size: 13px;
+            color: #334155;
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        .btn-submit {
+            grid-column: span 2;
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #7380cf 0%, #5c6bc0 100%);
+            color: white;
+            border: none;
+            border-radius: 16px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 6px 18px rgba(92, 107, 192, 0.35);
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 22px rgba(92, 107, 192, 0.45);
+        }
+
+        @media (max-width: 768px) {
+            .hero-banner { flex-direction: column; text-align: center; padding: 30px 20px; }
+            .banner-content { max-width: 100%; }
+            .banner-image { width: 260px; margin-top: 20px; }
+            .form-grid { grid-template-columns: 1fr; }
+            .checkbox-container, .btn-submit { grid-column: span 1; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav-left">
+            <a href="#" class="logo-box">
+                <img src="logo.png" alt="MULMEDFEST Logo" class="logo-img">
+                <span class="logo-text">MULMEDFEST</span>
+            </a>
+        </div>
+    </header>
+
+    <div class="main-container">
+
+        <!-- BANNER HERO -->
+        <div class="hero-banner">
+            <div class="banner-content">
+                <h1>MULMEDFEST 2026</h1>
+                <p>Agenda festival tahunan yang diselenggarakan untuk merayakan Dies Natalis UKM Multimedia, Screening Film, serta perilisan buku karya puisi (SPEKTRA)</p>
+                <a href="#form-section" class="banner-btn">Daftar Sekarang</a>
+            </div>
+            <img src="maskot.png" class="banner-image">
+        </div>
+
+        <!-- FORM PENDAFTARAN -->
+        <div id="form-section">
+            <h2 class="section-title">Form Pendaftaran Peserta</h2>
+            
+            <div class="form-card">
+                <form id="mulmedForm" class="form-grid">
+                    
+                    <div class="form-group">
+                        <label for="nama">Nama Lengkap</label>
+                        <input type="text" id="nama" placeholder="Masukkan nama lengkap" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="instansi">Asal Instansi</label>
+                        <input type="text" id="instansi" placeholder="Nama kampus/sekolah/instansi" required>
+                    </div>
+
+                     <div class="form-group">
+                        <label for="program_studi">Program Studi / Jurusan</label>
+                        <input type="text" id="program_studi" placeholder="Nama program studi / Jurusan" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="status">Status / Hubungan Institusi</label>
+                        <select id="status" required>
+                            <option value="" disabled selected>-- Pilih Status --</option>
+                            <option value="Dosen">Dosen</option>
+                            <option value="Mahasiswa">Mahasiswa</option>
+                            <option value="Pelajar">Pelajar</option>
+                            <option value="Masyarakat Umum">Masyarakat Umum</option>
+                            <option value="Lainnya">Lainnya</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="id_number">Jabatan / NIM / NIDN</label>
+                        <input type="text" id="id_number" placeholder="Jabatan, NIM, atau NIDN" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="whatsapp">Nomor WhatsApp</label>
+                        <input type="tel" id="whatsapp" placeholder="Contoh: 081234567890" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Alamat Email</label>
+                        <input type="email" id="email" placeholder="contoh@email.com" required>
+                    </div>
+
+                    <div class="checkbox-container">
+                        <input type="checkbox" id="tumbler" required>
+                        <label for="tumbler">Saya menyetujui untuk <strong>membawa minum/tumbler sendiri</strong> selama acara. 🥤</label>
+                    </div>
+
+                    <button type="button" id="btnSubmit" class="btn-submit" onclick="simpanKeDatabase()">Daftar Sekarang</button>
+
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- JAVASCRIPT SYSTEM PENDAFTARAN -->
+    <script>
+        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbz4CRAZ84OL0bnj_J1mnWI8HfND3FgNfpyJ7UcqDx3OOmkKghdh6elkAs_k4Kg-w98Xfg/exec";
+
+        function simpanKeDatabase() {
+            const btnSubmit = document.getElementById('btnSubmit');
+            const nama = document.getElementById('nama').value;
+            const instansi = document.getElementById('instansi').value;
+            const status = document.getElementById('status').value;
+            const id_number = document.getElementById('id_number').value;
+            const whatsapp = document.getElementById('whatsapp').value;
+            const email = document.getElementById('email').value;
+            const tumbler = document.getElementById('tumbler').checked;
+
+            if (!nama || !instansi || !status || !id_number || !whatsapp || !email) {
+                alert('Harap isi semua kolom pendaftaran terlebih dahulu!');
+                return;
+            }
+
+            if (!tumbler) {
+                alert('Anda wajib menyetujui untuk membawa minum/tumbler sendiri!');
+                return;
+            }
+
+            btnSubmit.innerText = "Mengirim Data...";
+            btnSubmit.disabled = true;
+
+            const dataPeserta = {
+                waktu: new Date().toLocaleString('id-ID'),
+                nama: nama,
+                instansi: instansi,
+                status: status,
+                id_number: id_number,
+                whatsapp: whatsapp,
+                email: email,
+                tumbler: tumbler ? "Setuju" : "Tidak"
+            };
+
+            fetch(SCRIPT_URL, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(dataPeserta)
+            })
+            .then(() => {
+                alert('Pendaftaran Berhasil! Data Anda telah tersimpan.');
+                document.getElementById('mulmedForm').reset();
+                btnSubmit.innerText = "Daftar Sekarang";
+                btnSubmit.disabled = false;
+            })
+            .catch(error => {
+                console.error('Error!', error.message);
+                alert('Gagal menyimpan data ke cloud. Periksa koneksi internet Anda.');
+                btnSubmit.innerText = "Daftar Sekarang";
+                btnSubmit.disabled = false;
+            });
+        }
+    </script>
+</body>
+</html>
